@@ -1,0 +1,59 @@
+<div class="container my-5">
+    <form [formGroup]="RegisterFormValidation" class="col-5 mx-auto shadow-sm p-4 bg-light rounded">
+      
+      <h2 class="text-center mb-4">Register</h2>
+  
+      <!-- Name -->
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" formControlName="name">
+        @if(RegisterFormValidation.get('name')?.invalid && RegisterFormValidation.get('name')?.touched) {
+          <div class="text-danger text-center fw-bold">
+            {{ getAllErrorsName() }}
+          </div>
+        }
+      </div>
+  
+      <!-- Email -->
+      <div class="mb-3">
+        <label for="registerEmail" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="registerEmail" formControlName="email">
+        @if(RegisterFormValidation.get('email')?.invalid && RegisterFormValidation.get('email')?.touched) {
+          <div class="text-danger text-center fw-bold">
+            {{ getAllErrorsEmail() }}
+          </div>
+        }
+      </div>
+  
+      <!-- Password -->
+      <div class="mb-3">
+        <label for="registerPassword" class="form-label">Password</label>
+        <input type="password" class="form-control" id="registerPassword" formControlName="password">
+        @if(RegisterFormValidation.get('password')?.invalid && RegisterFormValidation.get('password')?.touched) {
+          <div class="text-danger text-center fw-bold">
+            {{ getAllErrorsPassword() }}
+          </div>
+        }
+      </div>
+  
+      <!-- Confirm Password -->
+      <div class="mb-3">
+        <label for="confirmPassword" class="form-label">Confirm Password</label>
+        <input type="password" class="form-control" id="confirmPassword" formControlName="confirmPassword">
+        @if(RegisterFormValidation.get('confirmPassword')?.invalid && RegisterFormValidation.get('confirmPassword')?.touched) {
+          <div class="text-danger text-center fw-bold">
+            {{ getAllErrorsConfirmPassword() }}
+          </div>
+        }
+      </div>
+  
+      <!-- Submit Button -->
+      <div class="d-grid">
+        <button type="submit" class="btn btn-dark btn-lg w-100 mt-3 py-2 rounded-pill bg-dark" (click)="register()">Register</button>
+      </div>
+    </form>
+    <div>
+      <p class="text-center mt-3">Already have an account? <a  style="cursor: pointer;" routerLink="/login" class="text-decoration-none ">Login</a></p>
+    </div>
+  </div>
+  

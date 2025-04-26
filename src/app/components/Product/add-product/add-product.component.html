@@ -1,0 +1,88 @@
+<div class="form-container p-3  bg-dark  " >
+  <!-- Label above the form -->
+ 
+
+  <!-- Form -->
+  <form [formGroup]="FormValidation" class="col-4 my-4 shadow-md p-3   rounded mx-auto bg-light shadow-lg" (ngSubmit)="addProduct()" style="background-color: rgb(19, 20, 20);">
+    <h3 class="text-center  bg-dark rounded  mx-auto text-light fs-4 py-2 ">
+      <span class="bi bi-plus-circle me-2"></span>Add a New Product
+    </h3>
+    <!-- Product Name -->
+    <div class="input-group my-3">
+      <label for="name" class="input-group-text bi bi-cart px-4 bg-dark text-info"></label>
+   
+      <input id="name" type="text" class="form-control" formControlName="name" placeholder="Product Name">
+    </div>
+    <div *ngIf="FormValidation.get('name')?.invalid && FormValidation.get('name')?.touched"
+         class="text-danger text-center fw-bold">
+      Please enter a valid product name.
+    </div>
+
+    <!-- Product Price -->
+    <div class="input-group my-3">
+      <label for="price" class="input-group-text bi bi-currency-dollar px-4 bg-dark text-info"></label>
+   
+      <input id="price" type="number" class="form-control" formControlName="price" placeholder="Price">
+    </div>
+    <div *ngIf="FormValidation.get('price')?.invalid && FormValidation.get('price')?.touched"
+         class="text-danger text-center fw-bold">
+      Please enter a valid price.
+    </div>
+
+    <!-- Description -->
+    <div class="input-group my-3">
+      <label for="des" class="input-group-text bi bi-file-earmark-text px-4 bg-dark text-info"></label>
+   
+      <input id="des" type="text" class="form-control" formControlName="des" placeholder="Description">
+    </div>
+    <div *ngIf="FormValidation.get('des')?.invalid && FormValidation.get('des')?.touched"
+         class="text-danger text-center fw-bold">
+      Maximum 100 characters allowed.
+    </div>
+
+    <!-- Product Image URL -->
+    <div class="input-group my-3">
+      <label for="img" class="input-group-text bi bi-image px-4 bg-dark text-info"></label>
+   
+      <input id="img" type="text" class="form-control" formControlName="img" placeholder="Image URL">
+    </div>
+    <div *ngIf="FormValidation.get('img')?.invalid && FormValidation.get('img')?.touched"
+         class="text-danger text-center fw-bold">
+      Please enter a valid image URL (http/https).
+    </div>
+
+    <!-- Product Category -->
+    <div class="input-group my-3">
+      <label for="cat" class="input-group-text bi bi-tags px-4 bg-dark text-info"></label>
+   
+      <input id="cat" type="text" class="form-control" formControlName="cat" placeholder="Category">
+    </div>
+    <div *ngIf="FormValidation.get('cat')?.invalid && FormValidation.get('cat')?.touched"
+         class="text-danger text-center fw-bold">
+      Please enter a valid category.
+    </div>
+
+    <!-- Product Rating -->
+    <div class="input-group mb-3">
+      <label for="rate" class="input-group-text bi bi-star px-4 bg-dark text-info"></label>
+   
+      <select class="form-select" id="rate" formControlName="rate">
+        <option value="">Select Rating</option>
+        <option value="5">Five</option>
+        <option value="4">Four</option>
+        <option value="3">Three</option>
+        <option value="2">Two</option>
+        <option value="1">One</option>
+      </select>
+    </div>
+    <div *ngIf="FormValidation.get('rate')?.invalid && FormValidation.get('rate')?.touched"
+         class="text-danger text-center fw-bold">
+      Please select a rating (1-5).
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-dark btn-lg w-100 mt-3 py-2 rounded-pill bg-dark" [disabled]="FormValidation.invalid">
+      <i class="bi bi-save me-2"></i> Save Product
+    </button>
+  </form>
+</div>

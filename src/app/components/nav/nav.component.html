@@ -1,0 +1,10 @@
+<nav *ngIf="isLoggedIn" class="navbar navbar-expand-lg navbar-light bg-light">
+    <ul class="navbar-nav mx-auto">
+        <p>{{isLoggedIn}}</p>
+        <li class="nav-item m-2" ><a class="nav-link text-dark fs-6 fw-semibold" routerLink="/home">HOME</a></li>
+        <li class="nav-item m-2" ><a class="nav-link text-dark fs-6 fw-semibold" routerLink="/about">ABOUT</a></li>
+        <li class="nav-item m-2" ><a class="nav-link text-dark fs-6 fw-semibold" routerLink="/productsPage">PRODUCT</a></li>
+        <li class="nav-item m-2" ><a class="nav-link text-dark fs-6 fw-semibold" (click)="logOut()" routerLink="/login">LOGOUT</a></li>
+        <!-- <li class="nav-item m-2" ><a class="nav-link text-dark fs-6 fw-semibold" routerLink="/register">REGISTER</a></li> -->
+    </ul>
+</nav>

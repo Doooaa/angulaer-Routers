@@ -1,0 +1,80 @@
+
+<section class="mx-auto p-5 ">
+    <!-- slider -->    
+<section class="mx-auto p-5 bg-light ">
+    <!-- Slider/Carousel -->
+    <div id="productCarousel" class="carousel slide mb-5 col-8 mx-auto" data-bs-ride="carousel">
+      <div class="carousel-inner rounded-3 overflow-hidden shadow-lg">
+        @for (slide of sliderImages; track $index) {
+            <div class="carousel-item" [class.active]="index === $index">
+              <img [src]="slide.image" class="d-block w-80 mx-auto" 
+                   style="height: 540px; object-fit: cover;" 
+                   alt="Slide {{$index + 1}}">
+              <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded-pill p-3">
+                <h5>{{slide.title}}</h5>
+                <p>{{slide.description}}</p>
+              </div>
+            </div>
+          }
+      </div>
+      <button (click)="pre()" class="carousel-control-prev" type="button">
+        <span class="carousel-control-prev-icon" style="filter: brightness(0)"></span>
+      </button>
+      <button (click)="next()" class="carousel-control-next" type="button">
+        <span class="carousel-control-next-icon" style="filter: brightness(0)"></span>
+      </button>
+    </div>
+    <!-- slider -->
+
+
+<h3  class="fs-4 fw-semibold mx-auto text-center p-3 text-light " style="letter-spacing: 12px; background: #0f0e1b;">CATEGORY</h3>
+
+<div class="container-fluid bg-light  p-5 d-flex flex-row flex-wrap justify-content-center align-items-center">
+
+    @for (product of ProductsArray; track $index) {
+
+    <div class="card m-3" style="width: 18rem; border: none; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+
+
+        <div class="card-img-top bg-light" style="height: 200px; position: relative;">
+
+            <!-- Product Image -->
+            <img src={{product.productImage}} class="card-img-top" alt="Product Image"
+                style="height: 100%; object-fit: cover;">
+            <!-- Price Tag -->
+            <div class="position-absolute top-0 end-0  px-3 py-1 m-2 rounded rounded-sm  bg-dark px-2">
+                <span class="bi bi-star    text-info  bg-dark fs-4"> {{product.productRating}}.0</span>
+            </div>
+            <div class="position-absolute  bottom-50 end-0 bg-warning px-3 py-1 m-2  shadow-sm text-center">
+                <span class="fw-bold fs-4">$ {{product.productPrice}}</span>
+            </div>
+
+        </div>
+
+        <!-- Card Body -->
+        <div class="card-body p-4">
+            <!-- Product Name -->
+            <h2 style="display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp:1;  overflow: hidden;"
+                class="card-title fs-5 fw-bold mb-1">{{product.productName}}</h2>
+
+            <!-- Product Category -->
+            <p class="text-muted small mb-2">{{product.productCategory}}</p>
+
+            <!-- Description -->
+            <p class="card-text mb-3" style="display: -webkit-box;
+              -webkit-line-clamp: 1; /* Show up to 2 lines */
+              -webkit-box-orient: vertical;
+              overflow: hidden;">{{product.productDescription}}</p>
+
+            <!-- Add to Cart Button -->
+            <div class="d-grid">
+                <button class="btn btn-dark rounded-pill py-2">
+                    Add to Cart
+                </button>
+            </div>
+        </div>
+    </div>
+    }
+</div>
+
+</section>
