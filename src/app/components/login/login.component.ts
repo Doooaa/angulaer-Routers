@@ -18,6 +18,7 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   loginLoign: any;
   constructor(private Myauthservices: AuthService,private router:Router) {}
+ 
   LoginFormValidation = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [
@@ -49,12 +50,13 @@ export class LoginComponent {
   }
 
   login() {
+    console.log(this.Myauthservices.x+ "data of x from service login ✔✔🟢🔥🔥");
     if (this.LoginFormValidation.valid) {
     
       this.Myauthservices.login();
       
       this.router.navigate(['/home']);
-      console.log('Login successful!'+this.Myauthservices.loginTrue);
+  
     } else {
       console.log('Form is invalid');
     }

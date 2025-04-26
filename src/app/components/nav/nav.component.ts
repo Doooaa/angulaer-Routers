@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
@@ -8,16 +8,25 @@ import { CommonModule } from '@angular/common';
   imports: [RouterModule,CommonModule],
   templateUrl: './nav.component.html',
 })
-export class NavComponent {
-  isLoggedIn: any;
+export class NavComponent  implements OnInit ,OnChanges{
+   @Input() xx: any;
   constructor(private authService: AuthService) {
-    this.isLoggedIn = this.authService?.isLoggedIn; 
-     console.log('isLoggedIn from nav component:', this.isLoggedIn);
+    
+  }
+  ngOnInit() {
+    
+    this.xx=this.authService.x;
+    // this.authService.x = true;
+    console.log(this.authService.x+ "data of x from service in nav  on init component✔✔🟢🔥🔥");
   }
   logOut() {
     this.authService.logout();
-
-    console.log('User logged out from nav component:', this.isLoggedIn);
+    console.log(this.authService.x+ "data of x from service in out❌❌❌❄👉");
+ 
+  }
+  ngOnChanges() {
+    this.xx=this.authService.x;
+    console.log(this.authService.x+ "data of x from service in nav  on changes component✔✔🟢🔥🔥");
   }
 
 
